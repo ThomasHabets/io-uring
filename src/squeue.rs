@@ -39,14 +39,14 @@ pub trait EntryMarker: Clone + Debug + From<Entry> + private::Sealed {
 ///
 /// These can be created via opcodes in [`opcode`](crate::opcode).
 #[repr(C)]
-pub struct Entry(pub(crate) sys::io_uring_sqe);
+pub struct Entry(pub sys::io_uring_sqe);
 
 /// A 128-byte submission queue entry (SQE), representing a request for an I/O operation.
 ///
 /// These can be created via opcodes in [`opcode`](crate::opcode).
 #[repr(C)]
 #[derive(Clone)]
-pub struct Entry128(pub(crate) Entry, pub(crate) [u8; 64]);
+pub struct Entry128(pub Entry, pub [u8; 64]);
 
 #[test]
 fn test_entry_sizes() {
